@@ -1,7 +1,6 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: wzc
- * Date: 2018/10/18
- * Time: 1:00
- */
+@extends('layouts.app')
+@section('title', '首页')
+
+@section('content')
+    <h1>这里是首页</h1>
+@stop
