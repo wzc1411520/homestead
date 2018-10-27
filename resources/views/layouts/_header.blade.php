@@ -39,6 +39,18 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
+                                <a href="{{ route('users.show') }}">
+                                    {{--<a href="{{ route('users.edit', Auth::guard()->users->id) }}">--}}
+                                    个人中心
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('users.edit', Auth::id()) }}">
+                                {{--<a href="{{ route('users.edit', Auth::guard()->users->id) }}">--}}
+                                    编辑资料
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

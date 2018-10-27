@@ -34,4 +34,19 @@ Auth::routes();
 //Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 //Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+//动作
+//
+//URI	行为	路由名称
+//GET	/photos	index	photos.index
+//GET	/photos/create	create	photos.create
+//POST	/photos	store	photos.store
+//GET	/photos/{photo}	show	photos.show
+//GET	/photos/{photo}/edit	edit	photos.edit
+//PUT/PATCH	/photos/{photo}	update	photos.update
+//DELETE	/photos/{photo}
+//需要注意的是，以 PUT/PATCH/DELETE 请求时，需要在<form>标签内加一行
+//{{ method_field('PUT') }}
+//---------------------
+//原文：https://blog.csdn.net/minose/article/details/80567202
+//版权声明：本文为博主原创文章，转载请附上博文链接！
