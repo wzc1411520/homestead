@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\HelperController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +62,9 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users/show',compact('user'));
+        //控制器中使用 authorize 方法来检验用户是否授权
+        $this->authorize('update', $user);
+        return view('users/edit',compact('user'));
     }
 
     /**
@@ -69,7 +76,16 @@ class UsersController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->update($request->all());
+        //控制器中使用 authorize 方法来检验用户是否授权
+        $this->authorize('update', $user);
+        $data = $request->all();
+        if ($request->avatar){
+            $res = HelperController::save($request->avatar,'avatars',$user->id,362);
+            if ($res){
+                $data['avatar'] = $res['path'];
+            }
+        }
+        $user->update($data);
         return redirect()->route('users.show',$user->id)->with('success','个人资料更新成功');
     }
 
