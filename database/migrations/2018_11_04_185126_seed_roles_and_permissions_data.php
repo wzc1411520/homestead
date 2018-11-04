@@ -19,6 +19,8 @@ class SeedRolesAndPermissionsData extends Migration
         // 清除缓存
         app()['cache']->forget('spatie.permission.cache');
         // 先创建权限
+        // 权限的用户允许管理站点内所有话题和回复，包括编辑和删除动作；
+        //Horizon 的控制面板，只有 站长 才有权限查看。
         Permission::create(['name' => 'manage_contents']);//管理员
         Permission::create(['name' => 'manage_users']);//站点
         Permission::create(['name' => 'edit_settings']);//站点设置

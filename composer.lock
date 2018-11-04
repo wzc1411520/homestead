@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f803c3b9cb8ab8895e728a7c546a36ce",
+    "content-hash": "f5143e3a84b3c2ac5badd46afb7b3b64",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -54,6 +54,53 @@
                 "lpm"
             ],
             "time": "2018-11-01T10:04:31+00:00"
+        },
+        {
+            "name": "ckeditor/ckeditor",
+            "version": "4.10.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ckeditor/ckeditor-releases.git",
+                "reference": "e5999810955383eb4f72c03a5af7f2dfd59390a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/e5999810955383eb4f72c03a5af7f2dfd59390a0",
+                "reference": "e5999810955383eb4f72c03a5af7f2dfd59390a0",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "http://cksource.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor.",
+            "homepage": "http://ckeditor.com",
+            "keywords": [
+                "CKEditor",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "time": "2018-09-11T18:33:38+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2279,6 +2326,73 @@
             "time": "2018-10-15T19:10:43+00:00"
         },
         {
+            "name": "summerblue/administrator",
+            "version": "v1.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/summerblue/administrator.git",
+                "reference": "22869b39e471dcf43dd7eca7fd4839cc3836f14e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/summerblue/administrator/zipball/22869b39e471dcf43dd7eca7fd4839cc3836f14e",
+                "reference": "22869b39e471dcf43dd7eca7fd4839cc3836f14e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ckeditor/ckeditor": "4.*",
+                "laravel/framework": "5.5.*",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~5.7.12"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Frozennode\\Administrator\\AdministratorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/controllers"
+                ],
+                "psr-0": {
+                    "Frozennode\\Administrator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Original: Jan Hartigan, modified by CJ",
+                    "email": "cj@estgroupe.com"
+                }
+            ],
+            "description": "A database interface package for Laravel, modified!",
+            "homepage": "https://github.com/summerblue/administrator",
+            "keywords": [
+                "admin",
+                "administrator",
+                "cms",
+                "database",
+                "laravel",
+                "laravel-administrator"
+            ],
+            "time": "2018-06-17T04:15:56+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.1.3",
             "source": {
@@ -3352,6 +3466,52 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27T11:13:29+00:00"
+        },
+        {
+            "name": "viacreative/sudo-su",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/viacreative/sudo-su.git",
+                "reference": "78905d0db3721a5daece6f7fcd6c6567fd00bb46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/viacreative/sudo-su/zipball/78905d0db3721a5daece6f7fcd6c6567fd00bb46",
+                "reference": "78905d0db3721a5daece6f7fcd6c6567fd00bb46",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "VIACreative\\SudoSu\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Terry Harvey",
+                    "email": "contact@terryharvey.co.uk"
+                }
+            ],
+            "description": "A utility package for logging in as other users",
+            "keywords": [
+                "debugging",
+                "laravel"
+            ],
+            "time": "2017-03-23T16:28:08+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
