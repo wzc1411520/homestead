@@ -170,6 +170,7 @@ return [
         //验证码
         Mews\Captcha\CaptchaServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Application Service Providers...
          */

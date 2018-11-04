@@ -41,14 +41,19 @@ class TopicsController extends Controller
 		return view('topics.create_and_edit', compact('topic','categories'));
 	}
 
-	public function store(Topic $topic,Request $request)
+	public function store(Request $request,Topic $topic)
 	{
+//	    dd($request->all());
 //		$topic = Topic::create($request->all());
-        $topic->fill($request->all());
-        $topic->user_id = Auth::user()->id;
+//        $topic->fill($request->all());
+        $topic->title = $request->title;
+        $topic->body = $request->body;
+        $topic->user_id = Auth::id();
+        $topic->category_id = $request->category_id;
         $topic->save();
-//        return redirect()->route('topics.index')->with('success', '创建成功');
-		return redirect()->to($topic->link())->with('success', '成功创建话题！');
+//        return 123;
+        return redirect()->route('topics.index')->with('success', '创建成功');
+//		return redirect()->to($topic->link())->with('success', '成功创建话题！');
 	}
 
 	public function edit(Topic $topic)
@@ -71,7 +76,7 @@ class TopicsController extends Controller
 		$this->authorize('destroy', $topic);
 		$topic->delete();
 
-		return redirect()->route('topics.index')->with('success', '创建成功');
+		return redirect()->route('topics.index')->with('success', '删除成功');
 	}
 	
 	//上传图片

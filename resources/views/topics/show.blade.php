@@ -80,7 +80,7 @@
                     {{--//视条件加载子模板--}}
                     {{--话题回复功能我们只允许登录用户使用，未登录用户不显示即可--}}
                     @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])
-                    @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+                    @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->recent()->get()])
                 </div>
             </div>
         </div>
