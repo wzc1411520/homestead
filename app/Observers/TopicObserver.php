@@ -2,6 +2,8 @@
 
 namespace App\Observers;
 //Eloquent 的 观察器
+use App\Helper\SlugTranslateHandler;
+use App\Jobs\TranslateSlug;
 use App\Models\Topic;
 //Eloquent 模型会触发许多事件（Event），
 //我们可以对模型的生命周期内多个时间点进行监控：
@@ -16,16 +18,31 @@ class TopicObserver
     public function saving(Topic $topic)
     {
         //clean 使用HTMLPurifier  来避免xss攻击的运行库
-        $topic->body = clean($topic->body, 'user_topic_body');
+        $topic->body = clean($topic->body);
+
+        //生成话题摘录
         $topic->excerpt = make_excerpt($topic->body);
+
+        // 如 slug 字段无内容，即使用翻译器对 title 进行翻译
+//        if ( ! $topic->slug) {
+//            $topic->slug = app(SlugTranslateHandler::class)->translate($topic->title);
+//        }
+        // 如 slug 字段无内容，即使用翻译器对 title 进行翻译
+        if ( ! $topic->slug) {
+
+            // 推送任务到队列
+            dispatch(new TranslateSlug($topic));
+        }
     }
     public function creating(Topic $topic)
     {
-        //
+        $topic->body = clean($topic->body);
+        $topic->excerpt = make_excerpt($topic->body);
     }
 
     public function updating(Topic $topic)
     {
-        //
+        $topic->body = clean($topic->body);
+        $topic->excerpt = make_excerpt($topic->body);
     }
 }

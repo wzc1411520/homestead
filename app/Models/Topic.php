@@ -15,6 +15,13 @@ class Topic extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    //一个话题有很多的回复
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
 //这里我们使用了 Laravel 本地作用域 。
 //本地作用域允许我们定义通用的约束集合以便在应用中复用。
 //要定义这样的一个作用域，只需简单在对应 Eloquent 模型方法前加上一个 scope 前缀，
@@ -48,5 +55,10 @@ class Topic extends Model
     {
         // 按照创建时间排序
         return $query->orderBy('created_at', 'desc');
+    }
+//新建方法 link()来生成模型 URL，然后将所有调用了 route('topics.show', $topic->id) 的地方修改为 $topic->link(
+    public function link($params = [])
+    {
+        return route('topics.show', array_merge([$this->id, $this->slug], $params));
     }
 }

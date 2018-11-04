@@ -25,8 +25,12 @@ class TopicsController extends Controller
 		return view('topics.index', compact('topics'));
 	}
 
-    public function show(Topic $topic)
+    public function show(Request $request,Topic $topic)
     {
+        // URL 矫正
+        if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
+            return redirect($topic->link(), 301);
+        }
         return view('topics.show', compact('topic'));
     }
 
@@ -43,8 +47,8 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::user()->id;
         $topic->save();
-        return redirect()->route('topics.index')->with('success', '创建成功');
-//		return redirect()->route('topics.show', $topic->id)->with('message', 'Created successfully.');
+//        return redirect()->route('topics.index')->with('success', '创建成功');
+		return redirect()->to($topic->link())->with('success', '成功创建话题！');
 	}
 
 	public function edit(Topic $topic)
@@ -67,7 +71,7 @@ class TopicsController extends Controller
 		$this->authorize('destroy', $topic);
 		$topic->delete();
 
-		return redirect()->route('topics.index')->with('success', '删除成功');
+		return redirect()->route('topics.index')->with('success', '创建成功');
 	}
 	
 	//上传图片

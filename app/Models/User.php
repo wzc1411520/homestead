@@ -32,4 +32,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Topic::class);
     }
+    
+    //判断操作的用户是否是当前的用户
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
+    
+    //一个用户有很多的回复
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }

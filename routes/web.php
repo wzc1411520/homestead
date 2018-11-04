@@ -51,8 +51,12 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 //原文：https://blog.csdn.net/minose/article/details/80567202
 //版权声明：本文为博主原创文章，转载请附上博文链接！
 //标题
-Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 //分类
 Route::resource('categories','CategoriesController',['only'=>['show']]);
 
 Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
+
+//Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
